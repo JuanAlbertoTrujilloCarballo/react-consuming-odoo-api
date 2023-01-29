@@ -1,0 +1,88 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="empresa.empresa_tree">
+      <field name="name" >empresa.empresa.tree</field>
+      <field name="model">empresa.empresa</field>
+      <field name="arch" type="xml" >
+        <tree>
+          <field name="name"  groups="empresa.grupo_jefe_de_proyectos, empresa.grupo_analista"/>
+          <field name="empresa"  groups="empresa.grupo_jefe_de_proyectos, empresa.grupo_analista"/>
+          <field name="descripcion"  groups="empresa.grupo_jefe_de_proyectos, empresa.grupo_analista"/>
+          <field name="empleados"  groups="empresa.grupo_jefe_de_proyectos, empresa.grupo_analista"/>
+          <field name="pagos"  groups="empresa.grupo_jefe_de_proyectos, empresa.grupo_analista"/>
+          <field name="dinero_gastado"  groups="empresa.grupo_jefe_de_proyectos, empresa.grupo_analista"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="empresa.empresa_form">
+      <field name="name">empresa.empresa.form</field>
+      <field name="model">empresa.empresa</field>
+      <field name="arch" type="xml">
+        <form>
+          <group colspan="2" col="2">
+            <field name="name" />
+            <field name="empresa" />
+            <field name="descripcion" />
+            <field name="empleados" />
+            <field name="pagos" />
+            <field name="dinero_gastado" />
+            <field name="proyectos">
+              <tree>
+                <field name="name" />
+                <field name="user_id" />
+              </tree>
+            </field>
+          </group>
+        </form>
+      </field>
+    </record>
+
+    <record id="project_project_inherit" model="ir.ui.view">
+      <field name="name">project.project.inherit</field>
+      <field name="model">project.project</field>
+      <field name="inherit_id" ref="project.edit_project"/>
+      <field name="arch" type="xml">
+        <field name="partner_id" position="after">
+          <field name="particular"></field>
+        </field>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="empresa.empresa_action_window">
+      <field name="name">empresa.empresa.action.window</field>
+      <field name="res_model">empresa.empresa</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="empresa.action_server">
+      <field name="name">empresa server</field>
+      <field name="model_id" ref="model_empresa_empresa"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+    <!-- Top menu item -->
+    <menuitem name="empresa" id="empresa.menu_root" />
+    <!-- menu categories -->
+    <menuitem name="empresa" id="empresa.empresa_menu" parent="empresa.menu_root" />
+    <!-- actions -->
+    <menuitem name="empresa" id="empresa.empresa_menu_empresa" parent="empresa.empresa_menu"
+      action="empresa.empresa_action_window" />
+      <menuitem name="tareas" id="empresa.empresa_menu_tarea" parent="empresa.empresa_menu"
+      action="project.action_view_all_task" />
+  </data>
+</odoo>

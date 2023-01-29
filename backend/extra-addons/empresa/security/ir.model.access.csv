@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_empresa_empresa_jefe,empresa.empresa.jefe,model_empresa_empresa,empresa.grupo_jefe_de_proyectos,1,1,1,1
+
+access_empresa_empresa_analista,empresa.empresa.analista,model_empresa_empresa,empresa.grupo_analista,1,0,0,0
+
+access_empresa_empresa_programador,empresa.empresa.programador,model_empresa_empresa,empresa.grupo_programador,1,0,0,0
+
+access_project_project,project.project,model_project_project,empresa.programador_projecto,1,0,0,0
+access_project_task_type_project_user,project.task.type.project.user,model_empresa_empresa,empresa.programador_projecto,1,0,0,0
+access_project_task,project.task,model_project_task,empresa.programador_projecto,1,1,0,0
+access_partner_task_user,base.res.partner user,base.model_res_partner,empresa.programador_projecto,1,0,0,0
+access_resource_calendar,project.resource_calendar user,resource.model_resource_calendar,empresa.programador_projecto,1,0,0,0
+access_resource_calendar_attendance,project.resource_calendar_attendance user,resource.model_resource_calendar_attendance,empresa.programador_projecto,1,0,0,0
+access_resource_calendar_leaves_user,resource.calendar.leaves user,resource.model_resource_calendar_leaves,empresa.programador_projecto,1,1,1,1
+access_account_analytic_account_user,account.analytic.account,analytic.model_account_analytic_account,empresa.programador_projecto,1,0,0,0
+access_project_task_recurrence,project.task.recurrence,model_empresa_empresa,empresa.programador_projecto,1,0,0,0

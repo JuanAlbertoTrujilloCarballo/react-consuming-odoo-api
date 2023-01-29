@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo noupdate="1">
+
+  <record id="project_client_alberto" model="res.partner">
+    <field name="name">Alberto</field>
+    <field name="display_name">Alberto</field>
+  </record>
+</odoo>
